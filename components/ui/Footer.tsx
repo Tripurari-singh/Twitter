@@ -1,4 +1,4 @@
-import { Footer } from "./blocks/footer-section";
+import { Footer } from "../blocks/footer-section";
 
 export default function DemoOneFooter() {
 	return (
