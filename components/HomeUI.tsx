@@ -53,9 +53,9 @@ function ElegantShape({
 }
 
 function HeroGeometric({
-  badge = "Design Collective",
-  title1 = "Elevate Your Digital Vision",
-  title2 = "Crafting Exceptional Websites",
+  badge = "Go Viral",
+  title1 = "Share what’s happening",
+  title2 = "Join the conversation",
 }: {
   badge?: string;
   title1?: string;
@@ -152,8 +152,8 @@ function HeroGeometric({
 
           <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
             <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
-              Crafting exceptional digital experiences through innovative design and cutting-edge
-              technology.
+              A modern social platform built for fast, meaningful updates.
+               Post thoughts, explore trends, and stay connected in real time.
             </p>
           </motion.div>
         </div>
