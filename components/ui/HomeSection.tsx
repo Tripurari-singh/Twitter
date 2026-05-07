@@ -3,6 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Circle, Zap, Globe, Shield, TrendingUp, MessageCircle, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SignInButton } from "@clerk/nextjs";
 
 // ─── Shared helpers ──────────────────────────────────────────────────────────
 
@@ -343,14 +344,16 @@ function CTASection() {
           viewport={{ once: true, amount: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <motion.a
-            href="#"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-black text-sm font-semibold tracking-wide transition-colors hover:bg-white/90"
-          >
-            Get started — it's free
-          </motion.a>
+          <SignInButton forceRedirectUrl="/dashboard">
+              <motion.a
+                href="#"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-black text-sm font-semibold tracking-wide transition-colors hover:bg-white/90"
+              >
+                Get started — it's free
+              </motion.a>
+          </SignInButton>
           <motion.a
             href="#"
             whileHover={{ scale: 1.04 }}

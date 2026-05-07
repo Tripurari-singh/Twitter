@@ -4,7 +4,7 @@ import * as React from "react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { Menu, X } from "lucide-react"
-import { SignUpButton } from "@clerk/nextjs"
+import { SignInButton, SignUpButton } from "@clerk/nextjs"
 
 const Navbar1 = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -52,7 +52,7 @@ const Navbar1 = () => {
           </nav>
 
         {/* Desktop CTA Button */}
-        <SignUpButton>
+        <SignInButton forceRedirectUrl="/dashboard">
               <motion.div
                   className="hidden md:block"
                   initial={{ opacity: 0, x: 20 }}
@@ -67,7 +67,7 @@ const Navbar1 = () => {
                   Get Started
                 </a>
             </motion.div>
-        </SignUpButton>
+        </SignInButton>
 
         {/* Mobile Menu Button */}
         <motion.button className="md:hidden flex items-center" onClick={toggleMenu} whileTap={{ scale: 0.9 }}>
