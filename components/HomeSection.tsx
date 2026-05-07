@@ -264,46 +264,6 @@ function StatsSection() {
           className="right-[-4%] top-[20%]"
         />
       </div>
-
-      <div className="relative z-10 container mx-auto px-6 max-w-5xl">
-        <motion.div
-          custom={0}
-          variants={sectionFadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
-              The world is already
-            </span>
-            <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300">
-              talking here
-            </span>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {stats.map((s, i) => (
-            <motion.div
-              key={s.label}
-              custom={i + 1}
-              variants={sectionFadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 text-center overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] to-rose-500/[0.05]" />
-              <s.icon className="relative mx-auto mb-3 w-5 h-5 text-white/30" />
-              <p className="relative text-3xl font-bold text-white tracking-tight mb-1">{s.value}</p>
-              <p className="relative text-xs text-white/40 tracking-wide font-light">{s.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }

@@ -4,6 +4,7 @@ import * as React from "react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { Menu, X } from "lucide-react"
+import { SignUpButton } from "@clerk/nextjs"
 
 const Navbar1 = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -51,20 +52,22 @@ const Navbar1 = () => {
           </nav>
 
         {/* Desktop CTA Button */}
-        <motion.div
-          className="hidden md:block"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          whileHover={{ scale: 1.05 }}
-        >
-          <a
-            href="#"
-            className="inline-flex items-center justify-center px-5 py-2 text-sm text-white bg-black rounded-full hover:bg-gray-800 transition-colors"
-          >
-            Get Started
-          </a>
-        </motion.div>
+        <SignUpButton>
+              <motion.div
+                  className="hidden md:block"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                <a
+                  href="#"
+                  className="inline-flex items-center justify-center px-5 py-2 text-sm text-white bg-black rounded-full hover:bg-gray-800 transition-colors"
+                >
+                  Get Started
+                </a>
+            </motion.div>
+        </SignUpButton>
 
         {/* Mobile Menu Button */}
         <motion.button className="md:hidden flex items-center" onClick={toggleMenu} whileTap={{ scale: 0.9 }}>
