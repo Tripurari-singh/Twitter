@@ -264,15 +264,6 @@ function StatsSection() {
           className="right-[-4%] top-[20%]"
         />
       </div>
-
-      <div className="relative z-10 container mx-auto px-6 max-w-5xl">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            
-          })}
-        </div>
-      </div>
     </section>
   );
 }
