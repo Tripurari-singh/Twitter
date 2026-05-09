@@ -329,4 +329,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-<p align="center">Built with ❤️ using Next.js, Clerk, Prisma, PostgreSQL & shadcn/ui</p>
+<p align="center">Built with  using Next.js, Clerk, Prisma, PostgreSQL & shadcn/ui</p>
