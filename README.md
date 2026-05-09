@@ -1,4 +1,4 @@
-# 🚀 Project Name
+#  Threadly
 
 > A modern full-stack web application built with Next.js, secured with Clerk authentication, powered by PostgreSQL via Prisma ORM, and styled with shadcn/ui components.
 
@@ -11,24 +11,10 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Tech Stack](#-tech-stack)
-- [Features](#-features)
-- [Prerequisites](#-prerequisites)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
-- [Database Setup](#-database-setup)
-- [Project Structure](#-project-structure)
-- [Authentication](#-authentication)
-- [UI Components](#-ui-components)
-- [Available Scripts](#-available-scripts)
-- [Deployment](#-deployment)
-- [Contributing](#-contributing)
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -42,19 +28,19 @@
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🔐 Full authentication flow — sign up, sign in, sign out, and profile management via Clerk
-- 🗄️ Type-safe database access with Prisma ORM
-- 🐘 PostgreSQL relational database
-- 🎨 Accessible, themeable UI with shadcn/ui and Tailwind CSS
-- ⚡ Server and Client Components using the Next.js App Router
-- 🌗 Light / Dark mode support
-- 📱 Fully responsive design
+-  Full authentication flow — sign up, sign in, sign out, and profile management via Clerk
+-  Type-safe database access with Prisma ORM
+-  PostgreSQL relational database
+-  Accessible, themeable UI with shadcn/ui and Tailwind CSS
+-  Server and Client Components using the Next.js App Router
+-  Light / Dark mode support
+-  Fully responsive design
 
 ---
 
-## ✅ Prerequisites
+##  Prerequisites
 
 Make sure you have the following installed before getting started:
 
@@ -65,7 +51,7 @@ Make sure you have the following installed before getting started:
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Clone the repository
 
@@ -114,7 +100,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🔑 Environment Variables
+##  Environment Variables
 
 Create a `.env` file in the root of your project. Below is the full list of required variables.
 
@@ -142,7 +128,7 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
 
 ---
 
-## 🗄️ Database Setup
+##  Database Setup
 
 This project uses **Prisma** as the ORM with a **PostgreSQL** backend.
 
@@ -168,7 +154,7 @@ npx prisma migrate deploy
 # Open Prisma Studio (visual DB browser)
 npx prisma studio
 
-# Reset the database (⚠️ deletes all data)
+# Reset the database ( deletes all data)
 npx prisma migrate reset
 ```
 
@@ -198,7 +184,7 @@ model User {
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 ├── app/
@@ -237,7 +223,7 @@ model User {
 
 ---
 
-## 🔐 Authentication
+##  Authentication
 
 Authentication is handled entirely by **Clerk**. The `middleware.ts` file protects routes using Clerk's built-in middleware helper.
 
@@ -268,7 +254,7 @@ Use Clerk webhooks (`/api/webhooks/clerk`) to sync user creation/update/deletion
 
 ---
 
-## 🎨 UI Components
+##  UI Components
 
 UI is built with **[shadcn/ui](https://ui.shadcn.com/)**, which generates accessible, customizable components into your project using Tailwind CSS.
 
@@ -291,7 +277,7 @@ Edit the CSS variables in `app/globals.css` to customize the color theme, border
 
 ---
 
-## 📜 Available Scripts
+##  Available Scripts
 
 | Script | Description |
 |---|---|
@@ -305,9 +291,9 @@ Edit the CSS variables in `app/globals.css` to customize the color theme, border
 
 ---
 
-## 🚢 Deployment
+##  Deployment
 
-### Vercel (recommended)
+### Vercel
 
 1. Push your code to GitHub.
 2. Import the repository on [Vercel](https://vercel.com/).
@@ -317,15 +303,13 @@ Edit the CSS variables in `app/globals.css` to customize the color theme, border
 ### Database hosting options
 
 - [Neon](https://neon.tech/) — serverless PostgreSQL, generous free tier
-- [Supabase](https://supabase.com/) — PostgreSQL with extra features
-- [Railway](https://railway.app/) — simple hosted PostgreSQL
 - [Render](https://render.com/) — managed PostgreSQL
 
 > After deploying, run `npx prisma migrate deploy` to apply pending migrations to your production database.
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -339,7 +323,7 @@ Please follow the [Conventional Commits](https://www.conventionalcommits.org/) s
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the [MIT License](LICENSE).
 
