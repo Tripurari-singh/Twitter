@@ -42,7 +42,7 @@ model User {
 
 
 model Post {
-     id                   String           @default(cuid())
+     id                   String           @id @default(cuid())
      content              String
      authodId             String
      image                String
@@ -61,7 +61,7 @@ model Post {
 
 
 model Comment {
-     id                  String            @default(cuid())
+     id                  String            @id @default(cuid())
      content             String
      authorId            String
      postId              String
@@ -78,7 +78,7 @@ model Comment {
 }
 
 model Like {
-     id                  String            @default(cuid())
+     id                  String            @id @default(cuid())
      postId              String
      userid              String
      createdAt           DateTime          @default(now())
@@ -100,7 +100,7 @@ model Follow {
 
 
      // Relations
-     follower            User             @relation("follower" , fields: [followerId], references: [id] , onDelete: Cascade)
+     follower            User             @relation("followers" , fields: [followerId], references: [id] , onDelete: Cascade)
      following           User             @relation("following" , fields: [followingId], references: [id] , onDelete: Cascade)
 
      // Index Creation
@@ -111,7 +111,7 @@ model Follow {
 }
 
 model Notification {
-     id                 String           @default(cuid())
+     id                 String           @id           @default(cuid())
      userId             String
      creatorId          String
      type               NotificationType
@@ -123,8 +123,8 @@ model Notification {
      // Relations
 
 
-     user               User             @relation("userNotification" , fields: [userId] , references: [id] , onDelete: Cascade)
-     creator            User             @relation("notificationCreator" , fields: [createdAt] , references: [id] , onDelete: Cascade)
+     user               User             @relation("userNotifications" , fields: [userId] , references: [id] , onDelete: Cascade)
+     creator            User             @relation("notificationCreator" , fields: [creatorId] , references: [id] , onDelete: Cascade)
      comment            Comment          @relation(fields: [commentId], references: [id] , onDelete: Cascade)
      post               Post             @relation(fields: [postId] , references: [id])
 
@@ -133,5 +133,8 @@ model Notification {
 }
 
 
-
-
+enum NotificationType {
+  LIKE
+  COMMENT
+  FOLLOW
+}
