@@ -13,46 +13,31 @@ datasource db {
 }
 
 model User {
-     id          String        @id          @default(cuid())
-     username    String        @unique
-     email       String        @unique
-     password    String
-     name        String
-     bio         String
-     avatarUrl   String
-     coverUrl    String
-     createdAt   DateTime      @default(now())
-     updatedAt   DateTime      @updatedAt
+      id                  String           @id          @default(cuid())
+      username            String           @unique
+      email               String           @unique
+      clerkId             String           @unique
+      name                String?
+      bio                 String?
+      image               String?
+      location            String?
+      website             String?
+      createdAt           DateTime         @default(now())
+      updatedAt           DateTime         @updatedAt
 
 
+     // Realations
+     likes                Like[]
+     comments             Comment[]
+     posts                Post[]
 
-     tweets      Tweet[]
-     likes       Like[]
-     reposts     Repost[]
 
+     following            Follow[]         @relation("following")
+     followers            Follow[]         @relation("followers")
 
-    following   Follow[] @relation("following")
-    followers   Follow[] @relation("followers")
+     notifications        Notification[]   @relation("userNotifications")
+     notificationCreated  Notification[]   @relation("notificationCreator")
+     
 }
 
 
-model Tweet {
-     id          String       @id            @default(cuid())
-     content     String
-     imageUrl    String
-     createdAt   DateTime     @default(now())
-     updatedAt   DateTime     @updatedAt
-
-}
-
-model Like {
-
-}
-
-model Repost {
-
-}
-
-model Follow {
-
-}
