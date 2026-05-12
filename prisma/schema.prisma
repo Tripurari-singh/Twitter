@@ -41,3 +41,21 @@ model User {
 }
 
 
+model Post {
+     id                   String           @default(cuid())
+     content              String
+     authodId             String
+     image                String
+     createdAt            DateTime         @default(now())
+     updatedAt            DateTime         @updatedAt
+
+
+
+     // Relations
+     author              User              @relation(fields: [authodId] , references: [id] , onDelete: Cascade) // Cascade means delete all posts once user is deleted
+     comments            Comment[]
+     likes               Like[]
+     notifications       Notification[]
+
+}
+
