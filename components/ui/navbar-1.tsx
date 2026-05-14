@@ -1,12 +1,15 @@
 "use client" 
 
-import * as React from "react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { Menu, X } from "lucide-react"
-import { SignInButton, SignUpButton } from "@clerk/nextjs"
+import { SignInButton } from "@clerk/nextjs"
+import { currentUser } from "@clerk/nextjs/server"
+import syncUser from "@/actions/user.action"
 
-const Navbar1 = () => {
+const Navbar1 = async () => {
+
+
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => setIsOpen(!isOpen)
