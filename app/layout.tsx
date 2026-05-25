@@ -3,7 +3,7 @@ import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@cl
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { currentUser } from '@clerk/nextjs/server'
-import { syncUser } from '@/actions/user.action'
+import syncUser from '@/actions/user.action'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
