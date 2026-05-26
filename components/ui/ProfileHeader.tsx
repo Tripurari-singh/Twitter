@@ -3,6 +3,7 @@ import { isFollowing } from "@/actions/follow.action";
 import Avatar from "./Avatar";
 import FollowButton from "./FollowButton";
 import { MapPin, Link as LinkIcon, Calendar } from "lucide-react";
+import FollowersModal from "./FollowersModal";
 
 export default async function ProfileHeader({ username }: { username: string }) {
   const [profile, currentUser] = await Promise.all([
@@ -59,19 +60,16 @@ export default async function ProfileHeader({ username }: { username: string }) 
           </span>
         </div>
 
-        <div className="flex gap-6 border-t border-white/10 pt-4">
-          <div>
+        <div className="flex items-center gap-8 border-t border-white/10 pt-4">
+          <div className="text-center">
             <p className="text-white font-bold text-sm">{profile._count.posts}</p>
             <p className="text-white/40 text-xs">Posts</p>
           </div>
-          <div>
-            <p className="text-white font-bold text-sm">{profile._count.followers}</p>
-            <p className="text-white/40 text-xs">Followers</p>
-          </div>
-          <div>
-            <p className="text-white font-bold text-sm">{profile._count.following}</p>
-            <p className="text-white/40 text-xs">Following</p>
-          </div>
+          <FollowersModal
+            username={profile.username}
+            followersCount={profile._count.followers}
+            followingCount={profile._count.following}
+          />
         </div>
       </div>
     </div>
