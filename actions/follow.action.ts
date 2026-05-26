@@ -18,6 +18,9 @@ export async function toggleFollow(
     if (!me) return { success: false, error: "User not found" };
     if (me.id === targetUserId) return { success: false, error: "Cannot follow yourself" };
 
+    const targetUser = await prisma.user.findUnique({ where: { id: targetUserId }, select: { username: true } });
+    const targetUsername = targetUser?.username ?? "";
+
     const existing = await prisma.follow.findUnique({
       where: { followerId_followingId: { followerId: me.id, followingId: targetUserId } },
     });
@@ -31,6 +34,8 @@ export async function toggleFollow(
           where: { type: NotificationType.FOLLOW, userId: targetUserId, creatorId: me.id },
         }),
       ]);
+      revalidatePath(`/profile/${targetUsername}`);
+      revalidatePath("/dashboard");
       return { success: true, data: { following: false } };
     } else {
       await prisma.$transaction([
@@ -45,6 +50,8 @@ export async function toggleFollow(
           },
         }),
       ]);
+      revalidatePath(`/profile/${targetUsername}`);
+      revalidatePath("/dashboard");
       return { success: true, data: { following: true } };
     }
   } catch (error) {
