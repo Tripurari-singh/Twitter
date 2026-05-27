@@ -1,8 +1,8 @@
 "use client";
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { toggleFollow } from "@/actions/follow.action";
+import { useRouter } from "next/navigation";
 
 export default function FollowButton({
   targetUserId,
@@ -14,12 +14,23 @@ export default function FollowButton({
   const [following, setFollowing] = useState(initialFollowing);
   const [loading, setLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const router = useRouter();
 
   async function handleFollow() {
     if (loading) return;
     setLoading(true);
-    const result = await toggleFollow(targetUserId);
-    if (result.success) setFollowing(result.data.following);
+    try {
+      const result = await toggleFollow(targetUserId);
+      console.log("toggleFollow result:", result);
+      if (result.success) {
+        setFollowing(result.data.following);
+        router.refresh();
+      } else {
+        console.error("toggleFollow error:", result.error);
+      }
+    } catch (e) {
+      console.error("toggleFollow exception:", e);
+    }
     setLoading(false);
   }
 

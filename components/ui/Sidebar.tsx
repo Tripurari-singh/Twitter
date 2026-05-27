@@ -40,6 +40,7 @@ export function Sidebar({ className = "" }: { className?: string }) {
   const { signOut } = useClerk();
   const { user } = useUser();
   const router = useRouter();
+  const username = user?.username ?? user?.emailAddresses[0]?.emailAddress?.split("@")[0] ?? "";
 
   useEffect(() => {
     const handleResize = () => {
@@ -139,7 +140,7 @@ export function Sidebar({ className = "" }: { className?: string }) {
               return (
                 <li key={item.id}>
                   <Link
-                    href={item.href}
+                    href={item.id === "profile" ? `/profile/${username}` : item.href}
                     onClick={handleItemClick}
                     className={`
                       w-full flex items-center gap-3 px-3 py-3 rounded-xl text-left transition-all duration-200 group

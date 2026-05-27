@@ -1,6 +1,6 @@
 import { Sidebar } from "@/components/ui/Sidebar";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function ProtectedLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-black text-white flex">
       <aside className="sticky top-0 h-screen shrink-0 hidden md:block">

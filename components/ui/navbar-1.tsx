@@ -4,10 +4,9 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { Menu, X } from "lucide-react"
 import { SignInButton } from "@clerk/nextjs"
-import { currentUser } from "@clerk/nextjs/server"
-import { syncUser } from "@/actions/user.action"
 
-const Navbar1 = async () => {
+
+const Navbar1 = () => {
 
 
   const [isOpen, setIsOpen] = useState(false)
