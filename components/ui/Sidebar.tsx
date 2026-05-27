@@ -12,6 +12,7 @@ import {
   ChevronRight,
   LogOut,
   Feather,
+  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -30,6 +31,7 @@ const navigationItems: NavigationItem[] = [
   { id: "dashboard", name: "Home", icon: Home, href: "/dashboard" },
   { id: "search", name: "Search", icon: Search, href: "/search" },
   { id: "notifications", name: "Notifications", icon: Bell, href: "/notifications" },
+  { id: "ai-compose", name: "AI Compose", icon: Sparkles, href: "/ai-compose" },
   { id: "profile", name: "Profile", icon: User, href: "/profile" },
 ];
 
