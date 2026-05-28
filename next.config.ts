@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
+  // standalone = Next.js bundles everything needed to run
+  // without node_modules (much smaller Docker image)
+
   images: {
     remotePatterns: [
       {
