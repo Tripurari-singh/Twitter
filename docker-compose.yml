@@ -1,7 +1,4 @@
-version: "3.9"
-
 services:
-  # ── PostgreSQL Database ──────────────────────────────────────────
   db:
     image: postgres:16-alpine
     container_name: threadly-db
@@ -11,41 +8,33 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - threadly-db-data:/var/lib/postgresql/data
-      # named volume = data persists even if container is removed
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
+      interval: 5s
       timeout: 5s
-      retries: 5
-      # healthcheck = don't start app until DB is ready
+      retries: 10
 
-  # ── Next.js Application ──────────────────────────────────────────
   app:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_bGl2aW5nLWJsdWViaXJkLTI3LmNsZXJrLmFjY291bnRzLmRldiQ
+        NEXT_PUBLIC_CLERK_SIGN_IN_URL: /sign-in
+        NEXT_PUBLIC_CLERK_SIGN_UP_URL: /sign-up
+        NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL: /dashboard
     container_name: threadly-app
     restart: unless-stopped
     ports:
       - "3000:3000"
-    environment:
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/postgres
-      # 'db' = service name above (Docker internal DNS)
-      NODE_ENV: production
     env_file:
-      - .env.production
-      # load production env vars from file
+      - .env.docker
     depends_on:
       db:
         condition: service_healthy
-        # wait for DB healthcheck to pass before starting app
-    command: >
-      sh -c "npx prisma migrate deploy && node server.js"
-      # run migrations then start app
 
 volumes:
   threadly-db-data:
-    # named volume declaration
