@@ -1,0 +1,300 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 804B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 2.23kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24-alpine
+#3 DONE 0.7s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 107B done
+#4 DONE 0.0s
+
+#5 [deps 1/4] FROM docker.io/library/node:24-alpine@sha256:2bdb65ed1dab192432bc31c95f94155ca5ad7fc1392fb7eb7526ab682fa5bf14
+#5 DONE 0.0s
+
+#6 [deps 2/4] WORKDIR /app
+#6 CACHED
+
+#7 [runner  3/11] RUN addgroup --system --gid 1001 nodejs
+#7 CACHED
+
+#8 [runner  4/11] RUN adduser --system --uid 1001 nextjs
+#8 CACHED
+
+#9 [internal] load build context
+#9 transferring context: 5.49kB done
+#9 DONE 0.0s
+
+#10 [deps 3/4] COPY package.json package-lock.json ./
+#10 CACHED
+
+#11 [deps 4/4] RUN npm ci
+#11 11.87 npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+#11 411.0 
+#11 411.0 added 795 packages, and audited 796 packages in 7m
+#11 411.0 
+#11 411.0 241 packages are looking for funding
+#11 411.0   run `npm fund` for details
+#11 411.2 
+#11 411.2 9 vulnerabilities (6 moderate, 3 high)
+#11 411.2 
+#11 411.2 To address issues that do not require attention, run:
+#11 411.2   npm audit fix
+#11 411.2 
+#11 411.2 To address all issues (including breaking changes), run:
+#11 411.2   npm audit fix --force
+#11 411.2 
+#11 411.2 Run `npm audit` for details.
+#11 411.2 npm notice
+#11 411.2 npm notice New minor version of npm available! 11.13.0 -> 11.16.0
+#11 411.2 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+#11 411.2 npm notice To update run: npm install -g npm@11.16.0
+#11 411.2 npm notice
+#11 DONE 411.5s
+
+#6 [deps 2/4] WORKDIR /app
+#6 CACHED
+
+#12 [builder 3/6] COPY --from=deps /app/node_modules ./node_modules
+#12 DONE 7.5s
+
+#13 [builder 4/6] COPY . .
+#13 DONE 0.1s
+
+#14 [builder 5/6] RUN npx prisma generate
+#14 1.719 Loaded Prisma config from prisma.config.ts.
+#14 1.719 
+#14 1.782 Prisma schema loaded from prisma/schema.prisma.
+#14 1.973 
+#14 1.973 ✔ Generated Prisma Client (7.8.0) to ./app/generated/prisma in 120ms
+#14 1.973 
+#14 DONE 2.1s
+
+#15 [builder 6/6] RUN npm run build
+#15 0.398 
+#15 0.398 > twitter@0.1.0 build
+#15 0.398 > next build
+#15 0.398 
+#15 0.901 ▲ Next.js 16.2.4 (Turbopack)
+#15 0.901 - Environments: .env.production, .env
+#15 0.902 
+#15 0.938   Creating an optimized production build ...
+#15 6.024 ✓ Compiled successfully in 4.8s
+#15 6.029   Running TypeScript ...
+#15 10.06   Finished TypeScript in 4.0s ...
+#15 10.07   Collecting page data using 11 workers ...
+#15 11.32   Generating static pages using 11 workers (0/10) ...
+#15 11.44   Generating static pages using 11 workers (2/10) 
+#15 11.50 [RootLayout] Clerk error: Error: Dynamic server usage: Route /_not-found couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.50     at async j (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:1:15826)
+#15 11.50     at async k (.next/server/chunks/ssr/[root-of-the-server]__0x_m8e~._.js:1:41619) {
+#15 11.50   description: "Route /_not-found couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.50   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.50 }
+#15 11.55 [RootLayout] Clerk error: Error: Dynamic server usage: Route /ai-compose couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.55     at async j (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:1:15826)
+#15 11.55     at async k (.next/server/chunks/ssr/[root-of-the-server]__0x_m8e~._.js:1:41619) {
+#15 11.55   description: "Route /ai-compose couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.55   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.55 }
+#15 11.61 [getNotifications] Error: Dynamic server usage: Route /notifications couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.61     at async i (.next/server/chunks/ssr/_0or3ja7._.js:1:471)
+#15 11.61     at async i (.next/server/chunks/ssr/[root-of-the-server]__0htengp._.js:1:3200) {
+#15 11.61   description: "Route /notifications couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.61   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.61 }
+#15 11.61 [RootLayout] Clerk error: Error: Dynamic server usage: Route /notifications couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.61     at async j (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:1:15826)
+#15 11.61     at async k (.next/server/chunks/ssr/[root-of-the-server]__0x_m8e~._.js:1:41619) {
+#15 11.61   description: "Route /notifications couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.61   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.61 }
+#15 11.62 [RootLayout] Clerk error: Error: Dynamic server usage: Route /search couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.62     at async j (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:1:15826)
+#15 11.62     at async k (.next/server/chunks/ssr/[root-of-the-server]__0x_m8e~._.js:1:41619) {
+#15 11.62   description: "Route /search couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.62   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.62 }
+#15 11.64 [getSuggestedUsers] Error: Dynamic server usage: Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.64     at async o (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:3:1845)
+#15 11.64     at async l (.next/server/chunks/ssr/[root-of-the-server]__0b1n~vz._.js:1:5132) {
+#15 11.64   description: "Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.64   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.64 }
+#15 11.64 [getCurrentUser] Error: Dynamic server usage: Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.64     at async k (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:3:798)
+#15 11.64     at async l (.next/server/chunks/ssr/[root-of-the-server]__0b1n~vz._.js:1:5132) {
+#15 11.64   description: "Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.64   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.64 }
+#15 11.64 [RootLayout] Clerk error: Error: Dynamic server usage: Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.64     at async j (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:1:15826)
+#15 11.64     at async k (.next/server/chunks/ssr/[root-of-the-server]__0x_m8e~._.js:1:41619) {
+#15 11.64   description: "Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.64   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.64 }
+#15 11.64 [getFeed] Error: Dynamic server usage: Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.64     at async k (.next/server/chunks/ssr/_059wgwb._.js:1:1640)
+#15 11.64     at async i (.next/server/chunks/ssr/[root-of-the-server]__0b1n~vz._.js:1:2195) {
+#15 11.64   description: "Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.64   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.64 }
+#15 11.64 [getCurrentUser] Error: Dynamic server usage: Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.64     at async k (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:3:798)
+#15 11.64     at async i (.next/server/chunks/ssr/[root-of-the-server]__0b1n~vz._.js:1:2195) {
+#15 11.64   description: "Route /dashboard couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.64   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.64 }
+#15 11.69   Generating static pages using 11 workers (4/10) 
+#15 11.69   Generating static pages using 11 workers (7/10) 
+#15 11.71 [RootLayout] Clerk error: Error: Dynamic server usage: Route / couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.71     at async j (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:1:15826)
+#15 11.71     at async k (.next/server/chunks/ssr/[root-of-the-server]__0x_m8e~._.js:1:41619) {
+#15 11.71   description: "Route / couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.71   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.71 }
+#15 11.73 [getCurrentUser] Error: Dynamic server usage: Route /test couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.73     at async k (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:3:798)
+#15 11.73     at async k (.next/server/chunks/ssr/[root-of-the-server]__00oy.v7._.js:1:1240) {
+#15 11.73   description: "Route /test couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.73   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.73 }
+#15 11.73 [RootLayout] Clerk error: Error: Dynamic server usage: Route /test couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+#15 11.73     at async j (.next/server/chunks/ssr/[root-of-the-server]__02_w1so._.js:1:15826)
+#15 11.73     at async k (.next/server/chunks/ssr/[root-of-the-server]__0x_m8e~._.js:1:41619) {
+#15 11.73   description: "Route /test couldn't be rendered statically because it used `headers`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+#15 11.73   digest: 'DYNAMIC_SERVER_USAGE'
+#15 11.73 }
+#15 11.74 ✓ Generating static pages using 11 workers (10/10) in 426ms
+#15 11.75   Finalizing page optimization ...
+#15 12.16 
+#15 12.16 Route (app)
+#15 12.16 ┌ ƒ /
+#15 12.16 ├ ƒ /_not-found
+#15 12.16 ├ ƒ /ai-compose
+#15 12.16 ├ ƒ /api/ai
+#15 12.16 ├ ƒ /api/webhooks/clerk
+#15 12.16 ├ ƒ /dashboard
+#15 12.16 ├ ƒ /notifications
+#15 12.16 ├ ƒ /profile/[username]
+#15 12.16 ├ ƒ /search
+#15 12.16 ├ ƒ /sign-in/[[...sign-in]]
+#15 12.16 ├ ƒ /sign-up/[[...sign-up]]
+#15 12.16 └ ƒ /test
+#15 12.16 
+#15 12.16 
+#15 12.16 ƒ Proxy (Middleware)
+#15 12.16 
+#15 12.16 ƒ  (Dynamic)  server-rendered on demand
+#15 12.16 
+#15 DONE 13.0s
+
+#16 [runner  5/11] COPY --from=builder /app/.next/standalone ./
+#16 DONE 0.5s
+
+#17 [runner  6/11] COPY --from=builder /app/.next/static ./.next/static
+#17 DONE 0.1s
+
+#18 [runner  7/11] COPY --from=builder /app/public ./public
+#18 DONE 0.1s
+
+#19 [runner  8/11] COPY --from=builder /app/prisma ./prisma
+#19 DONE 0.1s
+
+#20 [runner  9/11] COPY --from=builder /app/node_modules ./node_modules
+#20 DONE 6.2s
+
+#21 [runner 10/11] COPY --from=builder /app/entrypoint.sh ./entrypoint.sh
+#21 DONE 0.1s
+
+#22 [runner 11/11] RUN chown -R nextjs:nodejs /app
+#22 DONE 140.5s
+
+#23 exporting to image
+#23 exporting layers
+#23 exporting layers 5.4s done
+#23 writing image sha256:e59891c0ea4c8dd75c7c14417062d25d8226acebd477b014c8f96df45651d216 done
+#23 naming to docker.io/library/twitter-app done
+#23 DONE 5.5s
+
+#24 resolving provenance for metadata file
+#24 DONE 0.0s
+ twitter-app  Built
+ Network twitter_default  Creating
+ Network twitter_default  Created
+ Container threadly-db  Creating
+ Container threadly-db  Created
+ Container threadly-app  Creating
+ Container threadly-app  Created
+Attaching to threadly-app, threadly-db
+threadly-db  | 
+threadly-db  | PostgreSQL Database directory appears to contain a database; Skipping initialization
+threadly-db  | 
+threadly-db  | 2026-05-29 20:14:58.390 UTC [1] LOG:  starting PostgreSQL 16.14 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+threadly-db  | 2026-05-29 20:14:58.390 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+threadly-db  | 2026-05-29 20:14:58.390 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+threadly-db  | 2026-05-29 20:14:58.398 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+threadly-db  | 2026-05-29 20:14:58.406 UTC [29] LOG:  database system was shut down at 2026-05-29 20:01:14 UTC
+threadly-db  | 2026-05-29 20:14:58.415 UTC [1] LOG:  database system is ready to accept connections
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
+threadly-db   | 2026-05-29 20:19:58.430 UTC [27] LOG:  checkpoint starting: time
+threadly-db   | 2026-05-29 20:19:58.457 UTC [27] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.006 s, sync=0.004 s, total=0.028 s; sync files=2, longest=0.003 s, average=0.002 s; distance=0 kB, estimate=0 kB; lsn=0/1533E50, redo lsn=0/1533E18
+threadly-app  | Running migrations...
+threadly-app  | Prisma schema loaded from prisma/schema.prisma.
+threadly-app  | Error: The datasource.url property is required in your Prisma config file when using prisma migrate deploy.
+[Kthreadly-app exited with code 1 (restarting)
