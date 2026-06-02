@@ -16,13 +16,16 @@ export async function POST(req: Request) {
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-sonnet-4-6",
       max_tokens: 1024,
       messages: [{ role: "user", content: `Generate a ${tone} Twitter post about: "${prompt}". Max 280 chars. Return only the post text.` }],
     }),
   });
   const data = await response.json();
-  if (!response.ok) return NextResponse.json({ error: "AI generation failed" }, { status: 500 });
+  if (!response.ok) {
+    console.error("Anthropic API error:", JSON.stringify(data));
+    return NextResponse.json({ error: data?.error?.message ?? "AI generation failed" }, { status: 500 });
+  }
   const text = data.content?.[0]?.text ?? "";
   return NextResponse.json({ post: text });
 }
